@@ -86,7 +86,7 @@ func ToScreamingDelimited(s string, delimiter uint8, ignore string, screaming bo
 			nextIsLow := next >= 'a' && next <= 'z'
 			nextIsNum := next >= '0' && next <= '9'
 			// add underscore if next letter case type is changed
-			if (vIsCap && (nextIsLow || nextIsNum)) || (vIsLow && (nextIsCap || nextIsNum)) || (vIsNum && (nextIsCap || nextIsLow)) {
+			if (vIsCap && nextIsLow) || (vIsLow && nextIsCap) || (vIsNum && (nextIsCap || nextIsLow)) {
 				prevIgnore := ignore != "" && i > 0 && strings.ContainsAny(string(s[i-1]), ignore)
 				if !prevIgnore {
 					if vIsCap && nextIsLow {
